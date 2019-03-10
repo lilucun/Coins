@@ -1,0 +1,16 @@
+INPUT(
+./debug\main.o
+./debug\mainwindow.o
+./debug\mybutton.o
+./debug\chooselevelsence.o
+./debug\playsence.o
+./debug\dataconfig.o
+./debug\coin.o
+./debug\qrc_res.o
+./debug\moc_mainwindow.o
+./debug\moc_mybutton.o
+./debug\moc_chooselevelsence.o
+./debug\moc_playsence.o
+./debug\moc_dataconfig.o
+./debug\moc_coin.o
+);
