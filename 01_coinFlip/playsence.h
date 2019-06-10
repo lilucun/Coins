@@ -29,7 +29,8 @@ public:
     //时间s
     static int sec;
     //显示时间
-    QLCDNumber *showtime;
+    QLCDNumber *showtime_sec;
+    QLCDNumber *showtime_min;
     QTimer *timer;
 
 signals:

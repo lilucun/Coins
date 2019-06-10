@@ -59,22 +59,38 @@ PlaySence::PlaySence(int level,int easyLevel)
     //设置字体 ：参数 字体 字号 粗体
     showLevelLabel->setFont(QFont ("Helvetica",18,QFont::Bold));
 
-    showLevelLabel->setText(QString("关卡：%1").arg(level+1));
+    showLevelLabel->setText(QString("关卡：%1  难度：%2 ").arg(level+1).arg(easyLevel));
     showLevelLabel->move(40,540);
-    showLevelLabel->setStyleSheet(QString("color: rgb(0, 255, 0);font: 18pt 'MV Boli'"));
+    showLevelLabel->setStyleSheet(QString("background-color: rgb(139, 74, 2);color: rgb(0, 255, 0);font: 18pt 'MV Boli'"));
 
     // 设置时间
     QLabel * label = new QLabel(this);
     label->setText(QString("当前使用时间："));
-    label->setGeometry(40, 75, 130, 30);
-    label->setStyleSheet(QString("color:rgb(0, 255, 0);font: 25 14pt 'Calibri Light';"));
-    showtime = new QLCDNumber(this);
-    showtime->setGeometry(180, 75, 80, 30);
+    label->setGeometry(130, 75, 130, 30);
+    label->setStyleSheet(QString("background-color: rgb(139, 74, 2);color:rgb(0, 255, 0);font: 25 14pt 'Calibri Light';"));
 
-    showtime->setStyleSheet(QString("color:rgb(255, 0, 0);background-color: rgb(255, 255, 127);font: 25 14pt 'Calibri Light';"));
+    showtime_min = new QLCDNumber(this);
+    showtime_min->setGeometry(80, 110, 80, 30);
+    showtime_min->setStyleSheet(QString("color:rgb(255, 0, 0);background-color: rgb(255, 255, 255);font: 25 14pt 'Calibri Light';"));
+
+    QLabel * label_min = new QLabel(this);
+    label_min->setText(QString("min"));
+    label_min->setGeometry(165, 110, 30, 30);
+    label_min->setStyleSheet(QString("background-color: rgb(139, 74, 2);color:rgb(0, 255, 0);font: 25 14pt 'Calibri Light';"));
+
+    showtime_sec = new QLCDNumber(this);
+    showtime_sec->setGeometry(205, 110, 80, 30);
+    showtime_sec->setStyleSheet(QString("color:rgb(255, 0, 0);background-color: rgb(255, 255, 255);font: 25 14pt 'Calibri Light';"));
+
+    QLabel * label_sec = new QLabel(this);
+    label_sec->setText(QString("sec"));
+    label_sec->setGeometry(290, 110, 30, 30);
+    label_sec->setStyleSheet(QString("background-color: rgb(139, 74, 2);color:rgb(0, 255, 0);font: 25 14pt 'Calibri Light';"));
+
     timer = new QTimer(this);
     timer->start(1000);
     // 超时
+
     connect(timer, &QTimer::timeout, this, &PlaySence::onTimeOut);
     // 清空计时
     chooseLevelSence *sence = new chooseLevelSence;
@@ -221,5 +237,13 @@ void PlaySence::paintEvent(QPaintEvent *)
 void PlaySence::onTimeOut()
 {
     //显示用时
-    showtime->display(++sec);
+    if(sec >= 60)
+    {
+        showtime_min->display(sec / 60);
+        showtime_sec->display(sec % 60);
+        sec++;
+    }
+    else
+        showtime_sec->display(++sec);
+
 }
