@@ -3,7 +3,7 @@
 #include "chooselevelsence.h"
 
 
-ChooseLevel::ChooseLevel(int posX, int posY, QWidget *parent) :
+ChooseLevel::ChooseLevel(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ChooseLevel)
 {
@@ -20,7 +20,7 @@ ChooseLevel::ChooseLevel(int posX, int posY, QWidget *parent) :
                                       "font: 87 18pt 'Arial Black';"));
     this->move(QPoint(590, 220));
     //选择关卡窗口设置;
-    chooseLevelSence *sence = new chooseLevelSence;
+    //chooseLevelSence *sence = new chooseLevelSence;
     //level6
     connect(ui->level6, &QPushButton::clicked, [=](){
         emit Level6();

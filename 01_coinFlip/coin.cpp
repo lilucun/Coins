@@ -22,7 +22,7 @@ Coin::Coin(QString path)
     timer1 = new QTimer;
 
     connect(timer1,&QTimer::timeout,[=](){
-        //切换图片，产生动画效果
+        //切换图片
         setImage(QString(":/res/Coin000%1.png").arg(++min));
         //定时器停止
         if(min >= 8)
@@ -34,9 +34,9 @@ Coin::Coin(QString path)
     });
 
     connect(timer2,&QTimer::timeout,[=](){
-        //切换图片，产生动画效果
+
         setImage(QString(":/res/Coin000%1.png").arg(--max));
-        //定时器停止
+
         if(max <= 1)
         {
             max = 8;

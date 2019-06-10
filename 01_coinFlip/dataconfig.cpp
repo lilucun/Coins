@@ -44,7 +44,7 @@ void dataConfig::randData()
     for(int i = 0; i < 20; i++)
     {
         initArray();
-        // 翻转
+
         // 增加难度
         reverseData();
         if(i >= 1){

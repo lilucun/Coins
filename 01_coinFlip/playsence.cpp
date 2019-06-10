@@ -93,7 +93,7 @@ PlaySence::PlaySence(int level,int easyLevel)
 
     connect(timer, &QTimer::timeout, this, &PlaySence::onTimeOut);
     // 清空计时
-    chooseLevelSence *sence = new chooseLevelSence;
+    //chooseLevelSence *sence = new chooseLevelSence;
 
     //新建返回按钮
     MyButton *backButton = new MyButton(":/res/BackButton.png",":/res/BackButtonSelected.png");

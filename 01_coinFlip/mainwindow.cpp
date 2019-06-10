@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //退出
     connect(ui->actionquit,&QAction::triggered,this,&MainWindow::close);
 
-    //实时更新 画图事件显示
+    //实时更新
     this->update();
 
     //开始按钮设置
@@ -52,10 +52,8 @@ MainWindow::MainWindow(QWidget *parent) :
                                       "background-color: rgb(0, 0, 139);"
                                       "border-radius:15px"));
     //难度选择
-
-    ChooseLevel *chooselevel = new ChooseLevel(this->geometry().x(), this->geometry().y());
+    ChooseLevel *chooselevel = new ChooseLevel();
     connect(chooseEasyDiff,&MyButton::clicked,[=](){
-
         chooselevel->show();
     });
 

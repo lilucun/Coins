@@ -12,7 +12,7 @@ class ChooseLevel : public QWidget
     Q_OBJECT
 
 public:
-    explicit ChooseLevel(int posX, int posY, QWidget *parent = 0);
+    explicit ChooseLevel(QWidget *parent = 0);
 
     ~ChooseLevel();
     void initArray();
