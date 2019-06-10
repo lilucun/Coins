@@ -25,7 +25,8 @@ public:
     MyButton *gameInfo;
     //画图事件
     void paintEvent(QPaintEvent *);
-
+public slots:
+    void showInfo();
 private:
     Ui::MainWindow *ui;
 };

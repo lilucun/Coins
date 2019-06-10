@@ -1,35 +1,84 @@
 #include "dataconfig.h"
 
+void dataConfig::initArray()
+{
+    for(int j = 0; j < 6; j++)
+    {
+        for(int z = 0; z < 6; z++)
+        {
+            array_level6[j][z]  = 1;
+        }
 
+    }
+}
+
+void dataConfig::reverseData()
+{
+    int c_j = rand() % 6;
+    int c_z = rand() % 6;
+    // 取反
+    array_level6[c_j][c_z] = (array_level6[c_j][c_z] + 1) % 2;
+    if(c_j - 1 >= 0)
+    {
+        array_level6[c_j - 1][c_z] = (array_level6[c_j - 1][c_z] + 1) % 2;
+    }
+    if(c_j + 1 <= 5)
+    {
+        array_level6[c_j + 1][c_z] =(array_level6[c_j + 1][c_z] + 1) % 2;
+    }
+    if(c_z - 1 >= 0)
+    {
+        array_level6[c_j][c_z - 1] =(array_level6[c_j][c_z - 1] + 1) % 2;
+    }
+    if(c_z + 1 <= 5)
+    {
+        array_level6[c_j][c_z + 1] = (array_level6[c_j][c_z + 1] + 1) % 2;
+    }
+}
 
 // 初始化数据
 void dataConfig::randData()
 {
+    //level 6
     srand(time(NULL));
-    for(int i=0;i<20;i++)
+    for(int i = 0; i < 20; i++)
     {
-        int array1[6][6] = {0} ;
-        for(int j=0;j<6;j++)
-        {
-            for(int z=0;z<6;z++)
+        initArray();
+        // 翻转
+        // 增加难度
+        reverseData();
+        if(i >= 1){
+            reverseData();
+            if(i >= 2)
             {
-                array1[j][z]  = rand()%2;
+                reverseData();
+                if(i >= 3)
+                {
+                    reverseData();
+                    if(i >= 10)
+                    {
+                        reverseData();
+                        if(i >= 15)
+                        {
+                            reverseData();
+                        }
+                    }
+                }
             }
         }
 
         QVector< QVector<int>> v;
-        for(int i = 0 ; i < 6;i++)
+        for(int i = 0 ; i < 6; i++)
         {
             QVector<int>v1;
-            for(int j = 0 ; j < 6;j++)
+            for(int j = 0 ; j < 6; j++)
             {
-
-                v1.push_back(array1[i][j]);
+                v1.push_back(array_level6[i][j]);
             }
             v.push_back(v1);
         }
 
-        mData.insert(i+1,v);
+        mData.insert(i + 1, v);
     }
 
 }
@@ -51,7 +100,6 @@ dataConfig::dataConfig(int easyLevel, QObject *parent) : QObject(parent)
             QVector<int>v1;
             for(int j = 0 ; j < 4;j++)
             {
-
                 v1.push_back(array1[i][j]);
             }
             v.push_back(v1);

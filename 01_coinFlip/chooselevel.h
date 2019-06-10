@@ -15,7 +15,7 @@ public:
     explicit ChooseLevel(int posX, int posY, QWidget *parent = 0);
 
     ~ChooseLevel();
-
+    void initArray();
 private:
     Ui::ChooseLevel *ui;
 

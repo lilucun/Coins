@@ -22,5 +22,6 @@
         <file>res/TapButtonSound.wav</file>
         <file>res/Title.png</file>
         <file>res/LevelIcon.png</file>
+        <file>res/level.png</file>
     </qresource>
 </RCC>

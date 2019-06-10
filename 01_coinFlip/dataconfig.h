@@ -17,7 +17,9 @@ public:
 
     //随机 产生 6*6矩阵
     void randData();
-
+    void initArray();
+    void reverseData();
+    int array_level6[6][6];
 signals:
 
 public slots:

@@ -7,7 +7,8 @@
 #include "ui_mainwindow.h"
 #include "chooselevel.h"
 #include "chooselevelsence.h"
-
+#include <QMessageBox>
+#include <QLabel>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -59,6 +60,7 @@ MainWindow::MainWindow(QWidget *parent) :
     });
 
 
+    connect(gameInfo, SIGNAL(clicked()), this, SLOT(showInfo()));
 
     startbutton->move(200 - startbutton->width()*0.5,450 - startbutton->height()*0.5);
     //选择关卡窗口设置
@@ -122,6 +124,21 @@ void MainWindow::paintEvent(QPaintEvent *)
     pix.load(":/res/Title.png");
     painter.drawPixmap(30,40,pix.width()*0.6,pix.height()*0.6,pix);
 
+}
+
+void MainWindow::showInfo()
+{
+    //QMessageBox::information(this, "游戏信息", "翻", QMessageBox::Ok);
+    QWidget *info = new QWidget();
+    info->setGeometry(470, 100, 430, 300);
+    info->setWindowTitle("游戏介绍！");
+
+    QLabel *la = new QLabel(info);
+    la->setGeometry(10, 0, 430, 300);
+    la->setStyleSheet(QString("font:16px;"));
+    la->setText(QString("翻金币是一个考验智力的小游戏。通过点击金币，被点击\n\n的和其四周的金币都会"
+                        "翻过来，直到翻到所有金币都是金\n\n色时游戏结束！！"));
+    info->show();
 }
 
 
